@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poonam Stores | Premium Cosmetics India</title>
+    <style>
+        /* Modern Minimalist Design System */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #fdfbf7;
+            color: #2b2b2b;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #ffffff;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: #1a1a1a;
+            text-transform: uppercase;
+        }
+
+        .logo span {
+            color: #d4a373; /* Elegant Gold accent */
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #4a4a4a;
+            margin-left: 2rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #d4a373;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(253, 251, 247, 0.95)), url('https://images.unsplash.com/photo-1608248597481-496100c8c836?q=80&w=1600') no-repeat center center/cover;
+            height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 1rem;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 600px;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            background-color: #1a1a1a;
+            color: #fff;
+            padding: 0.8rem 2.5rem;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            font-weight: 600;
+            border-radius: 4px;
+            transition: background 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #d4a373;
+        }
+
+        /* Categories Section */
+        .section-title {
+            text-align: center;
+            margin: 4rem 0 2rem;
+            font-size: 2rem;
+            position: relative;
+            letter-spacing: 1px;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 2px;
+            background-color: #d4a373;
+            margin: 0.5rem auto 0;
+        }
+
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            padding: 0 5% 4rem;
+        }
+
+        .card {
+            background: #ffffff;
+            padding: 2.5rem 1.5rem;
+            text-align: center;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+            border: 1px solid #f0eae1;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(212, 163, 115, 0.15);
+        }
+
+        .card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+            color: #1a1a1a;
+        }
+
+        .card p {
+            color: #777;
+            font-size: 0.95rem;
+        }
+
+        /* Contact Sections */
+        .contact-section {
+            background-color: #f5f3f0;
+            padding: 4rem 5%;
+            margin: 4rem 0;
+        }
+
+        .contact-container {
+            background-color: #fff;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background-color: #fafafa;
+            font-family: inherit;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #d4a373;
+            background-color: #fff;
+        }
+
+        .success-message {
+            color: #28a745;
+            background-color: #d4edda;
+            padding: 1rem;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+            display: none;
+        }
+
+        .error-message {
+            color: #dc3545;
+            background-color: #f8d7da;
+            padding: 1rem;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+            display: none;
+        }
+
+        .contacts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .contact-info {
+            background: #ffffff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+            border: 1px solid #f0eae1;
+            text-align: center;
+        }
+
+        .contact-info h4 {
+            color: #d4a373;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-info p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        footer {
+            background-color: #1a1a1a;
+            color: #888;
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav a {
+                margin-left: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">Poonam<span>Stores</span></div>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#categories">Categories</a>
+            <a href="#contact1">Enquiry</a>
+            <a href="#contact2">Wholesale</a>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <h1>Your Ultimate Beauty Destination</h1>
+        <p>Explore the finest selection of genuine international and Indian cosmetic brands, curated perfectly for your daily skincare and makeup routines.</p>
+        <a href="#contact1" class="btn">Get in Touch</a>
+    </section>
+
+    <h2 class="section-title" id="categories">Our Collections</h2>
+    <section class="categories">
+        <div class="card">
+            <h3>Premium Makeup</h3>
+            <p>Foundations, lip colors, and eye styling palettes from global and domestic favorites.</p>
+        </div>
+        <div class="card">
+            <h3>Advanced Skincare</h3>
+            <p>Gentle cleansers, targeted acne spot treatments, non-comedogenic moisturizers, and soothing aloe gels.</p>
+        </div>
+        <div class="card">
+            <h3>Luxury Haircare</h3>
+            <p>Nourishing oils, salon-grade shampoos, and intense repair hair masks.</p>
+        </div>
+        <div class="card">
+            <h3>Fragrances</h3>
+            <p>Long-lasting daily deos, subtle mist sprays, and premium luxury perfumes.</p>
+        </div>
+    </section>
+
+    <!-- CONTACT FORM 1: Product Enquiry -->
+    <div class="contact-section" id="contact1">
+        <h2 class="section-title">Product Enquiry</h2>
+        <div class="contact-container">
+            <div class="success-message" id="successMsg1">
+                ✓ Thank you! Your product enquiry has been received. We'll contact you soon.
+            </div>
+            <div class="error-message" id="errorMsg1">
+                ✗ Please fill all fields correctly.
+            </div>
+            <form id="contactForm1" onsubmit="handleFormSubmit(event, 1)">
+                <div class="form-group">
+                    <label for="name1">Your Name</label>
+                    <input type="text" id="name1" name="name" required placeholder="Enter your full name">
+                </div>
+                <div class="form-group">
+                    <label for="phone1">Phone Number</label>
+                    <input type="tel" id="phone1" name="phone" required placeholder="Enter your phone number">
+                </div>
+                <div class="form-group">
+                    <label for="email1">Email Address</label>
+                    <input type="email" id="email1" name="email" required placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label for="message1">What items are you looking for?</label>
+                    <textarea id="message1" name="message" rows="4" required placeholder="Let us know the brands or products you need..."></textarea>
+                </div>
+                <button type="submit" class="btn" style="width: 100%;">Send Enquiry</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- CONTACT FORM 2: Wholesale/Bulk Orders -->
+    <div class="contact-section" id="contact2">
+        <h2 class="section-title">Wholesale & Bulk Orders</h2>
+        <div class="contact-container">
+            <div class="success-message" id="successMsg2">
+                ✓ Thank you! Your wholesale inquiry has been received. Our B2B team will contact you within 24 hours.
+            </div>
+            <div class="error-message" id="errorMsg2">
+                ✗ Please fill all fields correctly.
+            </div>
+            <form id="contactForm2" onsubmit="handleFormSubmit(event, 2)">
+                <div class="form-group">
+                    <label for="businessName">Business Name</label>
+                    <input type="text" id="businessName" name="businessName" required placeholder="Your business/company name">
+                </div>
+                <div class="form-group">
+                    <label for="phone2">Contact Number</label>
+                    <input type="tel" id="phone2" name="phone" required placeholder="Enter your business phone">
+                </div>
+                <div class="form-group">
+                    <label for="email2">Business Email</label>
+                    <input type="email" id="email2" name="email" required placeholder="Enter your business email">
+                </div>
+                <div class="form-group">
+                    <label for="quantity">Order Quantity/Type</label>
+                    <textarea id="quantity" name="quantity" rows="4" required placeholder="Describe your bulk order requirements, quantities, and preferred categories..."></textarea>
+                </div>
+                <button type="submit" class="btn" style="width: 100%;">Request Quote</button>
+            </form>
+        </div>
+        <div class="contacts-grid">
+            <div class="contact-info">
+                <h4>📞 Call Us</h4>
+                <p>+91 XXXXX XXXXX<br>(Update with your number)</p>
+            </div>
+            <div class="contact-info">
+                <h4>📧 Email Us</h4>
+                <p>wholesale@poonamstores.com<br>enquiry@poonamstores.com</p>
+            </div>
+            <div class="contact-info">
+                <h4>📍 Location</h4>
+                <p>Pan-India Distribution<br>Available Across India</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Poonam Stores. All Authentic Products. Available across India.</p>
+    </footer>
+
+    <script>
+        function handleFormSubmit(event, formNumber) {
+            event.preventDefault();
+            
+            const formId = `contactForm${formNumber}`;
+            const successMsgId = `successMsg${formNumber}`;
+            const errorMsgId = `errorMsg${formNumber}`;
+            
+            const form = document.getElementById(formId);
+            const successMsg = document.getElementById(successMsgId);
+            const errorMsg = document.getElementById(errorMsgId);
+            
+            // Validate form
+            const formData = new FormData(form);
+            let isValid = true;
+            
+            for (let value of formData.values()) {
+                if (!value.trim()) {
+                    isValid = false;
+                    break;
+                }
+            }
+            
+            if (isValid) {
+                // Store data in localStorage (for demonstration)
+                const timestamp = new Date().toLocaleString();
+                const submissions = JSON.parse(localStorage.getItem('poonamSubmissions') || '[]');
+                
+                submissions.push({
+                    type: formNumber === 1 ? 'Product Enquiry' : 'Wholesale Inquiry',
+                    data: Object.fromEntries(formData),
+                    timestamp: timestamp
+                });
+                
+                localStorage.setItem('poonamSubmissions', JSON.stringify(submissions));
+                console.log('Submission saved:', Object.fromEntries(formData));
+                
+                // Show success message
+                errorMsg.style.display = 'none';
+                successMsg.style.display = 'block';
+                form.reset();
+                
+                // Hide success message after 5 seconds
+                setTimeout(() => {
+                    successMsg.style.display = 'none';
+                }, 5000);
+            } else {
+                // Show error message
+                successMsg.style.display = 'none';
+                errorMsg.style.display = 'block';
+                
+                setTimeout(() => {
+                    errorMsg.style.display = 'none';
+                }, 5000);
+            }
+        }
+
+        // Log stored submissions (for testing)
+        console.log('💾 Stored Submissions:', JSON.parse(localStorage.getItem('poonamSubmissions') || '[]'));
+    </script>
+
+</body>
+</html>
